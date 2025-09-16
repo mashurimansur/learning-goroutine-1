@@ -225,7 +225,7 @@ func main() {
 	defer output.Close()
 
 	for _, value := range resultList {
-		_, err := output.WriteString(fmt.Sprintf("%s;%f;%f;%f\n", value.Station, value.Sum/float32(value.Count), value.Min, value.Max))
+		_, err := fmt.Fprintf(output, "%s;%f;%f;%f\n", value.Station, value.Sum/float32(value.Count), value.Min, value.Max)
 		if err != nil {
 			panic(err)
 		}
